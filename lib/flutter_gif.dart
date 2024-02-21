@@ -260,10 +260,7 @@ Future<List<ImageInfo>> fetchGif(ImageProvider provider) async {
   ui.Codec codec = await instantiateImageCodecFromBuffer(buffer);
   for (int i = 0; i < codec.frameCount; i++) {
     final frameInfo = await codec.getNextFrame();
-    final duration = frameInfo.duration.inSeconds;
-    for (int sec = 1; sec <= duration; sec++) {
-      infos.add(ImageInfo(image: frameInfo.image));
-    }
+    infos.add(ImageInfo(image: frameInfo.image));
   }
   return infos;
 }
